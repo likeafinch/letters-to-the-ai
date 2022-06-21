@@ -10,7 +10,7 @@ module.exports = {
   manifestBackgroundColor: '#663399',
   manifestThemeColor: '#663399',
   manifestDisplay: 'standalone',
-  manifestIcon: './static/images/icon-256-256.png',
+  manifestIcon: './static/images/icon-256x256.png',
   pathPrefix: '/',
 
   // social
