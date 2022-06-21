@@ -1,0 +1,134 @@
+{
+  "name": "letters-to-the-ai",
+  "version": "0.0.1",
+  "description": "letters-to-the-ai",
+  "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "format": "prettier  --ignore-path .gitignore ./ --write \"./**/*.{js,jsx,json,md}\"",
+    "lint": "eslint --ext .js --ignore-path .gitignore ./",
+    "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore ./",
+    "commit:pre": "npm run lint:fix && npm run build && npm run format && git add ."
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "latest",
+    "@fontsource/source-sans-pro": "^4.5.0",
+    "@loadable/component": "^5.15.0",
+    "autoprefixer": "^10.2.5",
+    "gatsby": "latest",
+    "gatsby-image": "latest",
+    "gatsby-plugin-compile-es6-packages": "latest",
+    "gatsby-plugin-emotion": "latest",
+    "gatsby-plugin-manifest": "latest",
+    "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-sharp": "latest",
+    "gatsby-source-filesystem": "latest",
+    "gatsby-transformer-sharp": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet": "latest",
+    "tailwindcss": "^2.2.9",
+    "twin.macro": "^2.7.0",
+    "unfetch": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@loadable/babel-plugin": "^5.13.2",
+    "@loadable/webpack-plugin": "^5.15.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "latest",
+    "babel-preset-gatsby": "latest",
+    "chai": "^4.3.4",
+    "eslint-plugin-filenames": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-react": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "pre-commit": "latest",
+    "prettier": "latest"
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },
+  "eslintConfig": {
+    "globals": {
+      "tw": true,
+      "task": true
+    },
+    "extends": [
+      "react-app",
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "plugins": [
+      "react-hooks"
+    ],
+    "env": {
+      "es6": false,
+      "node": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 8
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/prop-types": "error",
+      "no-mixed-spaces-and-tabs": "off"
+    }
+  },
+  "babel": {
+    "plugins": [
+      "@loadable/babel-plugin"
+    ],
+    "presets": [
+      [
+        "babel-preset-gatsby",
+        {
+          "targets": {
+            "browsers": [
+              ">0.25%",
+              "not dead"
+            ]
+          }
+        }
+      ]
+    ]
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion"
+    }
+  },
+  "resolutions": {
+    "react-dom": "npm:@hot-loader/react-dom"
+  },
+  "pre-commit": [
+    "commit:pre"
+  ],
+  "engines": {
+    "node": "<=16"
+  }
+}
