@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "letters-to-the-ai",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "gatsby develop",
     "serve": "gatsby serve",
