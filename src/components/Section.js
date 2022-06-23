@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
+import { useSpring, animated } from 'react-spring';
 
-const SectionWrapper = styled.div`
-  ${tw`relative flex-col items-center justify-center w-full h-screen`}
-  display: ${(props) => (props.showSection ? 'flex' : 'none')};
+const SectionWrapper = styled(animated.div)`
+  ${tw`relative flex flex-col items-center justify-center w-full h-screen`}
+  position: ${(props) => (props.showSection ? 'relative' : 'absolute')};
+  z-index: ${(props) => (props.showSection ? 1 : -1)};
   opacity: ${(props) => (props.showSection ? 1 : 0)};
   transform: translateY(${(props) => (props.showSection ? 0 : 0.25)}rem);
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
     opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
     -webkit-filter 0.325s ease-in-out;
+  backdrop-filter: blur(3px);
   background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
 `;
 
-const SectionInner = styled.div`
-  ${tw`relative flex-col items-center px-5 md:px-8 pb-6 pt-8 md:pb-6 md:pt-10 bg-black-link rounded text-main text-base tracking-paragraph`}
-  display: ${(props) => (props.showSection ? 'flex' : 'none')};
-  opacity: ${(props) => (props.showSection ? 0.9 : 0)};
-  transform: scale(${(props) => (props.showSection ? 1 : 0.95)});
+const SectionInner = styled(animated.div)`
+  ${tw`relative flex-col items-center px-5 md:px-8 pb-6 pt-8 md:pb-6 md:pt-10 bg-black bg-opacity-90 rounded text-white text-base tracking-paragraph`}
+  transform: scale(${(props) => (props.showSection ? 1 : 0)});
   z-index: ${(props) => (props.showSection ? 10 : -1)};
   width: 42rem;
   transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
@@ -47,20 +48,26 @@ const CloseButton = styled.button`
 
 const Section = (props) => {
   const { name, active, children, handleClose, justifyEvenly } = props;
-  if (name === active) {
-    return (
-      <SectionWrapper showSection>
-        <SectionInner showSection justifyEvenly={justifyEvenly}>
-          <CloseButton onClick={handleClose}>
-            <p>X</p>
-          </CloseButton>
-          <SectionTitle>{name}</SectionTitle>
-          {children}
-        </SectionInner>
-      </SectionWrapper>
-    );
-  }
-  return <SectionWrapper />;
+  const animationProps = useSpring({
+    to: { opacity: 0.8 },
+    from: { opacity: 0 },
+    reverse: name !== active,
+  });
+  return (
+    <SectionWrapper showSection={name === active}>
+      <SectionInner
+        style={animationProps}
+        showSection={name === active}
+        justifyEvenly={justifyEvenly}
+      >
+        <CloseButton onClick={handleClose}>
+          <p>X</p>
+        </CloseButton>
+        <SectionTitle>{name}</SectionTitle>
+        {children}
+      </SectionInner>
+    </SectionWrapper>
+  );
 };
 Section.propTypes = {
   active: PropTypes.string,

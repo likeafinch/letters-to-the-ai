@@ -1,4 +1,4 @@
-export { fade, NeutrinoBackground, frameKeys } from './animations';
+export { fade } from './animations';
 
 export { default as colors } from './colors';
 

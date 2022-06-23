@@ -30,6 +30,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "latest",
+    "react-spring": "^9.4.5",
     "tailwindcss": "^2.2.9",
     "twin.macro": "^2.7.0",
     "unfetch": "^4.2.0"

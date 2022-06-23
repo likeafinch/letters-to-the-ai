@@ -15,12 +15,16 @@ const GlobalStyle = css`
     outline: none;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button,
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar,
+    *::-webkit-scrollbar {
       -webkit-appearance: none;
+      display: none;
     }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   body {
-    ${tw`bg-transparent`}
+    ${tw`bg-transparent overflow-hidden`}
     min-height: 100vh;
     /* mobile viewport bug fix */
     min-height: -webkit-fill-available;
