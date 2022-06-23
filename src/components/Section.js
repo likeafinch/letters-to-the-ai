@@ -17,13 +17,14 @@ const SectionWrapper = styled(animated.div)`
 `;
 
 const SectionInner = styled(animated.div)`
-  ${tw`relative flex-col items-center px-5 md:px-8 pb-6 pt-8 md:pb-6 md:pt-10 bg-black bg-opacity-90 rounded text-white text-base tracking-paragraph`}
+  ${tw`relative flex-col items-center px-5 md:px-8 pb-6 pt-8 md:pb-6 md:pt-10 bg-black bg-opacity-50 rounded text-white text-base tracking-paragraph`}
   transform: scale(${(props) => (props.showSection ? 1 : 0)});
   z-index: ${(props) => (props.showSection ? 10 : -1)};
   width: 42rem;
   transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
     -webkit-transform 0.325s ease-in-out;
   min-height: 50vh;
+  backdrop-filter: blur(50px);
   height: max-content;
   justify-content: ${({ justifyEvenly }) =>
     justifyEvenly ? 'space-evenly' : 'flex-start'};
