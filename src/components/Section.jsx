@@ -32,8 +32,9 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     md:pb-6
     md:pt-10
     bg-black
-    bg-opacity-50
+    bg-opacity-90
     rounded
+    shadow
     text-white
     text-base
     tracking-paragraph
@@ -44,7 +45,7 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
       -webkit-transform 0.325s ease-in-out;
     min-height: 50vh;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(80px);
     height: max-content;
     @media (max-width: 700px) {
       width: 95%;
@@ -71,7 +72,7 @@ const CloseButton = styled.button`
 const Section = (props) => {
   const { name, active, children, handleClose, justifyEvenly } = props;
   const animationProps = useSpring({
-    to: { opacity: 0.8 },
+    to: { opacity: 1 },
     from: { opacity: 0 },
     reverse: name !== active,
   });

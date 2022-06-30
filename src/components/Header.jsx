@@ -5,9 +5,7 @@ import logo from '../assets/simple-icon.png';
 import tw, { styled } from 'twin.macro';
 
 const AIMessageWrapper = styled.div`
-  ${tw`relative flex-col items-center justify-center w-full md:w-2/3 h-screen`}
-  display: ${(props) => (props.showHeader ? 'flex' : 'none')};
-  opacity: ${(props) => (props.showHeader ? 1 : 0)};
+  ${tw`absolute flex flex-col items-center justify-center w-full md:w-2/3 h-screen`}
   transform: translateY(${(props) => (props.showHeader ? 0 : 0.25)}rem);
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
     opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
@@ -49,25 +47,22 @@ const AIMessageTitle = tw.h1`relative text-2xl md:text-4xl text-main font-bold t
 const AIMessageParagraph = tw.p`relative text-xs md:text-sm text-main text-center font-thin uppercase tracking-paragraph`;
 
 const Header = ({ children, active, handleButtonClick }) => {
-  if (active === '') {
-    return (
-      <AIMessageWrapper showHeader>
-        <AIMessageLogoWrapper>
-          <AIMessageImg src={logo} alt="logo" />
-        </AIMessageLogoWrapper>
-        <AIMessageHeader>
-          <AIMessageTitle>Letters to The AI</AIMessageTitle>
-          <AIMessageParagraph>
-            {
-              'Write your own message for the future omni-artificial inteligience to find and use to define our future'
-            }
-          </AIMessageParagraph>
-        </AIMessageHeader>
-        <Navigation handleButtonClick={handleButtonClick} />
-      </AIMessageWrapper>
-    );
-  }
-  return <AIMessageWrapper />;
+  return (
+    <AIMessageWrapper showHeader={active === ''}>
+      <AIMessageLogoWrapper>
+        <AIMessageImg src={logo} alt="logo" />
+      </AIMessageLogoWrapper>
+      <AIMessageHeader>
+        <AIMessageTitle>Letters to The AI</AIMessageTitle>
+        <AIMessageParagraph>
+          {
+            'Write your own message for the future omni-artificial inteligience to find and use to define our future'
+          }
+        </AIMessageParagraph>
+      </AIMessageHeader>
+      <Navigation handleButtonClick={handleButtonClick} />
+    </AIMessageWrapper>
+  );
 };
 
 Header.propTypes = {

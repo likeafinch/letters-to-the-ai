@@ -5,7 +5,6 @@ import tw, { styled } from 'twin.macro';
 const NavigationWrapper = styled.ul`
   ${tw`relative flex items-center justify-evenly list-none w-full md:w-4/5 lg:w-3/5 max-w-md h-12 rounded border border-main divide-x`}
   margin-top: -1px;
-  margin-right: 1px;
 `;
 
 const NavigationButtonWrapper = tw.li`relative flex items-center justify-center h-full w-1/4`;
