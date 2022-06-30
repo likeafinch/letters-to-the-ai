@@ -1,0 +1,10 @@
+type Letter {
+  email: String!
+  name: String!
+  subject: String!
+  message: String!
+}
+
+type Query {
+  allLetters: [Letter]
+}

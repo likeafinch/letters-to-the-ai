@@ -40,6 +40,7 @@ const GlobalStyle = css`
     background-position: left bottom;
     background-color: rgba(50, 50, 50, 1);
     background-blend-mode: lighten;
+    filter: sepia(1) invert(1);
   }
   a {
     color: #222b2f;

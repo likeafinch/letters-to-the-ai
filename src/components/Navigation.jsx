@@ -51,7 +51,7 @@ Navigation.propTypes = {
 };
 
 Navigation.defaultProps = {
-  sectionNames: ['intro', 'AIMessage', 'about', 'contact'],
+  sectionNames: ['intro', 'write', 'letters', 'contact'],
 };
 
 export default Navigation;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { default as Navigation } from './Navigation';
-import logo from '../assets/icon-128x128.png';
+import logo from '../assets/simple-icon.png';
 import tw, { styled } from 'twin.macro';
 
 const AIMessageWrapper = styled.div`

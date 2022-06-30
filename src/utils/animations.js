@@ -1,4 +1,4 @@
-import  {  css } from 'twin.macro';
+import { css } from 'twin.macro';
 import { keyframes } from '@emotion/react';
 
 const fadeBackground = keyframes`

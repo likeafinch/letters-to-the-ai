@@ -3,10 +3,8 @@ import {
   Layout,
   Header,
   Section,
-  AIMessageForm,
   ContactForm,
-  About,
-  Intro,
+  LetterForm,
 } from '../components';
 
 // ========================
@@ -17,6 +15,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <Header active={active} handleButtonClick={handleButtonClick} />
+      <Section active={active} handleClose={handleClose} name="write">
+        <LetterForm />
+      </Section>
       <Section active={active} handleClose={handleClose} name="contact">
         <ContactForm />
       </Section>

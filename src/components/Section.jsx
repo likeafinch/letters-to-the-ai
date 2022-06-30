@@ -1,37 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import tw, { styled } from 'twin.macro';
+import tw, { css, styled } from 'twin.macro';
 import { useSpring, animated } from 'react-spring';
 
-const SectionWrapper = styled(animated.div)`
-  ${tw`relative flex flex-col items-center justify-center w-full h-screen`}
-  position: ${(props) => (props.showSection ? 'relative' : 'absolute')};
-  z-index: ${(props) => (props.showSection ? 1 : -1)};
-  opacity: ${(props) => (props.showSection ? 1 : 0)};
-  transform: translateY(${(props) => (props.showSection ? 0 : 0.25)}rem);
-  transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
-    opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
-    -webkit-filter 0.325s ease-in-out;
-  backdrop-filter: blur(3px);
-  background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
-`;
+const SectionWrapper = styled.div(({ showSection }) => [
+  tw`absolute -z-1 opacity-0 flex flex-col items-center justify-center w-full h-screen`,
+  css`
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
+      opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
+      -webkit-filter 0.325s ease-in-out;
+    backdrop-filter: blur(3px);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+    transform: translateY(0.25rem);
+  `,
+  showSection &&
+    tw`
+    relative z-auto opacity-100
+    translate-y-0
+  `,
+]);
 
-const SectionInner = styled(animated.div)`
-  ${tw`relative flex-col items-center px-5 md:px-8 pb-6 pt-8 md:pb-6 md:pt-10 bg-black bg-opacity-50 rounded text-white text-base tracking-paragraph`}
-  transform: scale(${(props) => (props.showSection ? 1 : 0)});
-  z-index: ${(props) => (props.showSection ? 10 : -1)};
-  width: 42rem;
-  transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
-    -webkit-transform 0.325s ease-in-out;
-  min-height: 50vh;
-  backdrop-filter: blur(50px);
-  height: max-content;
-  justify-content: ${({ justifyEvenly }) =>
-    justifyEvenly ? 'space-evenly' : 'flex-start'};
-  @media (max-width: 700px) {
-    width: 95%;
-  }
-`;
+const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
+  tw`
+    relative
+    flex-col
+    items-center
+    px-5
+    md:px-8
+    pb-6
+    pt-8
+    md:pb-6
+    md:pt-10
+    bg-black
+    bg-opacity-50
+    rounded
+    text-white
+    text-base
+    tracking-paragraph
+    -z-1
+    scale-0`,
+  css`
+    width: 42rem;
+    transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
+      -webkit-transform 0.325s ease-in-out;
+    min-height: 50vh;
+    backdrop-filter: blur(50px);
+    height: max-content;
+    @media (max-width: 700px) {
+      width: 95%;
+    }
+  `,
+  showSection && tw`scale-100 z-10`,
+  justifyEvenly && tw`justify-evenly`,
+]);
 
 const SectionTitle = tw.h2`relative text-main border-b border-main mb-8 pb-2 text-2xl tracking-title mr-auto uppercase`;
 
@@ -56,17 +77,18 @@ const Section = (props) => {
   });
   return (
     <SectionWrapper showSection={name === active}>
-      <SectionInner
-        style={animationProps}
-        showSection={name === active}
-        justifyEvenly={justifyEvenly}
-      >
-        <CloseButton onClick={handleClose}>
-          <p>X</p>
-        </CloseButton>
-        <SectionTitle>{name}</SectionTitle>
-        {children}
-      </SectionInner>
+      <animated.div style={animationProps}>
+        <SectionInner
+          showSection={name === active}
+          justifyEvenly={justifyEvenly}
+        >
+          <CloseButton onClick={handleClose}>
+            <p>X</p>
+          </CloseButton>
+          <SectionTitle>{name}</SectionTitle>
+          {children}
+        </SectionInner>
+      </animated.div>
     </SectionWrapper>
   );
 };
