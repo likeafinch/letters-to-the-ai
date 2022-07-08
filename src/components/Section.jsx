@@ -32,14 +32,15 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     md:pb-6
     md:pt-10
     bg-black
-    bg-opacity-90
+    bg-opacity-80
     rounded
     shadow
     text-white
     text-base
     tracking-paragraph
     -z-1
-    scale-0`,
+    scale-0
+    overflow-scroll`,
   css`
     width: 42rem;
     transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
@@ -47,6 +48,12 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     min-height: 50vh;
     backdrop-filter: blur(80px);
     height: max-content;
+    max-height: 95vh;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
     @media (max-width: 700px) {
       width: 95%;
     }

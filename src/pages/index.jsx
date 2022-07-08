@@ -5,6 +5,7 @@ import {
   Section,
   ContactForm,
   LetterForm,
+  LetterList,
 } from '../components';
 
 // ========================
@@ -17,6 +18,9 @@ const IndexPage = () => {
       <Header active={active} handleButtonClick={handleButtonClick} />
       <Section active={active} handleClose={handleClose} name="write">
         <LetterForm />
+      </Section>
+      <Section active={active} handleClose={handleClose} name="letters">
+        <LetterList />
       </Section>
       <Section active={active} handleClose={handleClose} name="contact">
         <ContactForm />
