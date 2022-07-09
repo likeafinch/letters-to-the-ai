@@ -18,7 +18,7 @@ const ContactForm = () => {
       <Textarea name={'message'} label={'Message'} />
       <Actions>
         <Button label={'Submit'} />
-        <Button label={'Reset'} secondary />
+        <Button label={'Reset'} variant={'outlined'} />
       </Actions>
     </>
   );

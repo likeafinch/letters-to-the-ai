@@ -53,7 +53,7 @@ const LetterForm = () => {
           disabled={!submittable}
           onClick={handleSubmit}
         />
-        <Button label={'Reset'} onClick={handleReset} secondary />
+        <Button label={'Reset'} onClick={handleReset} variant={'outlined'} />
       </Actions>
     </>
   );

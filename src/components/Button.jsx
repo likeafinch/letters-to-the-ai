@@ -2,69 +2,63 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
 
-const StyledButton = styled.a`
-  ${tw`
-  rounded
-  uppercase
-  flex
-  justify-center
-  items-center
-  no-underline
-  text-base
-  text-black-soft
-  tracking-paragraph
-  opacity-90
-  font-bold
-  h-11
-  px-4
-  w-fill
-  bg-main
-  mr-6
-  hover:cursor-pointer
-  hover:bg-secondary`}
-  transition: background-color .2s ease-in-out,color .2s ease-in-out;
-  ${({ disabled }) =>
-    disabled
-      ? `
-    pointer-events: none;
-    filter: grayscale(.2);
-  `
-      : ''}
-`;
-
-const SecondaryButton = styled.button`
-  ${tw`relative flex items-center justify-center w-2/5 h-11 border border-main rounded shadow-none uppercase tracking-paragraph font-bold text-base text-main bg-transparent`}
-  transition: background-color .2s ease-in-out,color .2s ease-in-out;
-  &:hover {
-    background-color: hsla(0, 0%, 100%, 0.075);
-  }
-  ${({ disabled }) =>
-    disabled
-      ? `
-    pointer-events: none;
-    filter: grayscale(.2);
-  `
-      : ''}
-`;
-
-export const Actions = tw.div`flex w-full items-center justify-between mt-auto pt-12`;
-
-const Button = (props) => {
-  const { label, secondary, ...extraProps } = props;
-  if (secondary) {
-    return <SecondaryButton {...extraProps}>{label}</SecondaryButton>;
-  }
-  return <StyledButton {...extraProps}>{label}</StyledButton>;
+export const variantStyles = {
+  contained: tw`
+      text-blueGray-50
+      bg-text-main
+      hover:cursor-pointer
+      hover:bg-coolGray-700
+      `,
+  outlined: tw`
+    border
+    text-text-main
+    border-text-main
+    border-solid
+    bg-transparent
+    cursor-pointer
+    hover:text-background-main
+    hover:bg-text-alt`,
 };
+const StyledButton = styled.button(({ variant, disabled }) => [
+  tw`
+    relative
+    px-6
+    flex
+    items-center
+    justify-center
+    tracking-paragraph
+    transition
+    transition-duration[.7s]
+    shadow-none
+    h-14
+    uppercase`,
+  disabled && tw`pointer-events-none grayscale`,
+  variantStyles[variant],
+]);
+
+export const Button = ({ label, variant, disabled, ...buttonProps }) => (
+  <StyledButton
+    variant={variant}
+    disabled={disabled}
+    data-testid={'button'}
+    aria-label={label}
+    {...buttonProps}
+  >
+    {label}
+  </StyledButton>
+);
 
 Button.propTypes = {
-  secondary: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  label: PropTypes.any.isRequired,
+  variant: PropTypes.oneOf(['contained', 'outlined']).isRequired,
+};
+Button.defaultProps = {
+  disabled: false,
+  label: 'Label',
+  variant: 'contained',
 };
 
-Button.defaultProps = {
-  agreed: false,
-  label: '',
-};
+export const Actions = tw.div`grid grid-cols-1 lg:grid-cols-2 justify-items-stretch mt-auto pt-12`;
 
 export default Button;

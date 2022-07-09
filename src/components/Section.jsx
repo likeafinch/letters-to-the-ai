@@ -31,11 +31,11 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     pt-8
     md:pb-6
     md:pt-10
-    bg-black
+    bg-blueGray-100
     bg-opacity-80
     rounded
     shadow
-    text-white
+    text-text-alt
     text-base
     tracking-paragraph
     -z-1
@@ -62,13 +62,13 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
   justifyEvenly && tw`justify-evenly`,
 ]);
 
-const SectionTitle = tw.h2`relative text-main border-b border-main mb-8 pb-2 text-2xl tracking-title mr-auto uppercase`;
+const SectionTitle = tw.h2`relative text-text-main border-b border-text-main mb-8 pb-2 text-2xl tracking-title mr-auto uppercase`;
 
 const CloseButton = styled.button`
   ${tw`absolute z-20 top-2 right-2 flex items-center justify-center h-10 w-10 border-none shadow-none bg-transparent rounded-full`}
   transition: background-color .2s ease-in-out,color .2s ease-in-out;
   p {
-    ${tw`relative h-full w-full text-center uppercase text-lg text-main font-bold leading-10`}
+    ${tw`relative h-full w-full text-center uppercase text-lg text-text-main font-bold leading-10`}
     transform: scaleX(1.5);
   }
   &:hover {

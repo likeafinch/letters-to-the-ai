@@ -24,7 +24,9 @@ const GlobalStyle = css`
     scrollbar-width: none;
   }
   body {
-    ${tw`bg-transparent overflow-hidden`}
+    ${tw`
+    bg-transparent
+    overflow-hidden`}
     min-height: 100vh;
     /* mobile viewport bug fix */
     min-height: -webkit-fill-available;
@@ -34,13 +36,22 @@ const GlobalStyle = css`
     height: -webkit-fill-available;
   }
   div#gatsby-focus-wrapper {
-    ${tw`relative flex flex-col items-center justify-center w-fill h-screen px-2 md:px-0 bg-no-repeat`}
+    ${tw`
+      relative
+      flex
+      flex-col
+      items-center
+      justify-center
+      w-fill
+      h-screen
+      px-2
+      md:px-0
+      bg-no-repeat
+      bg-coolGray-50`}
     animation: ${fade};
     background-image: url(${plasma});
     background-position: left bottom;
-    background-color: rgba(50, 50, 50, 1);
-    background-blend-mode: lighten;
-    filter: sepia(1) invert(1);
+    background-blend-mode: darken;
   }
   a {
     color: #222b2f;

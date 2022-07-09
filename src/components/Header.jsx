@@ -10,18 +10,20 @@ const AIMessageWrapper = styled.div`
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
     opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
     -webkit-filter 0.325s ease-in-out;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+  background-image: radial-gradient(
+    rgba(250, 250, 255, 0.25) 25%,
+    transparent 55%
+  );
 `;
 
 const AIMessageLogoWrapper = styled.div`
-  ${tw`relative flex items-center justify-center h-24 w-24 p-1 bg-contain bg-top bg-no-repeat border border-main rounded-full`}
+  ${tw`relative flex items-center justify-center h-24 w-24 p-1 bg-contain bg-top bg-no-repeat border border-text-main rounded-full`}
   margin-bottom: -1px;
-  filter: drop-shadow(2px 4px 6px black);
 `;
 const AIMessageImg = tw.img`relative w-full h-auto p-2 opacity-70`;
 
 const AIMessageHeader = styled.div`
-  ${tw`relative flex flex-col items-center justify-center h-52 border-t border-b border-main py-12 px-8 my-14`}
+  ${tw`relative flex flex-col items-center justify-center h-52 border-t border-b border-text-main py-12 px-8 my-14`}
   transition: max-height .75s ease,padding .75s ease,opacity .325s ease-in-out;
   transition-delay: 0.25s;
   max-height: 40rem;
@@ -31,7 +33,7 @@ const AIMessageHeader = styled.div`
   }
   &:before,
   &:after {
-    ${tw`absolute h-14 bg-main`}
+    ${tw`absolute h-14 bg-text-main`}
     content: " ";
     width: 1px;
     left: calc(50% - 0.5px);
@@ -43,8 +45,8 @@ const AIMessageHeader = styled.div`
     ${tw`-bottom-14`}
   }
 `;
-const AIMessageTitle = tw.h1`relative text-2xl md:text-4xl text-main font-bold text-center mb-4 uppercase tracking-title`;
-const AIMessageParagraph = tw.p`relative text-xs md:text-sm text-main text-center font-thin uppercase tracking-paragraph`;
+const AIMessageTitle = tw.h1`relative text-2xl md:text-4xl text-text-main font-bold text-center mb-4 uppercase tracking-title`;
+const AIMessageParagraph = tw.p`relative text-xs md:text-sm text-text-main text-center font-thin uppercase tracking-paragraph`;
 
 const Header = ({ children, active, handleButtonClick }) => {
   return (
