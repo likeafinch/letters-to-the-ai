@@ -1,8 +1,9 @@
 import React from 'react';
-import Button, { Actions } from './Button';
-import Input, { MultiInputs } from './Input';
-import Textarea from './Textarea';
-import { useLetterForm } from '../atoms';
+import Button, { Actions } from '../Button';
+import Input, { MultiInputs } from '../Input';
+import Textarea from '../Textarea';
+import { useLetterForm } from '../../atoms';
+
 const LetterForm = () => {
   const {
     email,
@@ -60,3 +61,4 @@ const LetterForm = () => {
 };
 
 export default LetterForm;
+

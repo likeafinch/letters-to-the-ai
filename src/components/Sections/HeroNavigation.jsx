@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { default as Navigation } from './Navigation';
-import logo from '../assets/simple-icon.png';
+import Navigation from './Navigation';
+import logo from '../../assets/simple-icon.png';
 import tw, { styled } from 'twin.macro';
 
 const AIMessageWrapper = styled.div`
@@ -48,7 +48,7 @@ const AIMessageHeader = styled.div`
 const AIMessageTitle = tw.h1`relative text-2xl md:text-4xl text-text-main font-bold text-center mb-4 uppercase tracking-title`;
 const AIMessageParagraph = tw.p`relative text-xs md:text-sm text-text-main text-center font-thin uppercase tracking-paragraph`;
 
-const Header = ({ children, active, handleButtonClick }) => {
+const HeroNavigation = ({ children, active, handleButtonClick }) => {
   return (
     <AIMessageWrapper showHeader={active === ''}>
       <AIMessageLogoWrapper>
@@ -67,10 +67,10 @@ const Header = ({ children, active, handleButtonClick }) => {
   );
 };
 
-Header.propTypes = {
+HeroNavigation.propTypes = {
   active: PropTypes.string,
   children: PropTypes.any,
   handleButtonClick: PropTypes.func,
 };
 
-export default Header;
+export default HeroNavigation;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button, { Actions } from './Button';
-import Input, { MultiInputs } from './Input';
-import Textarea from './Textarea';
+import Button, { Actions } from '../Button';
+import Input, { MultiInputs } from '../Input';
+import Textarea from '../Textarea';
 const ContactForm = () => {
   return (
     <>
@@ -25,3 +25,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
