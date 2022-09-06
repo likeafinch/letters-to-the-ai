@@ -1,3 +1,4 @@
+import Intro from './Intro';
 import LetterForm from './LetterForm';
 import LetterList from './LetterList';
 import ContactForm from './ContactForm';
@@ -13,7 +14,9 @@ const Sections = () => {
   return (
     <>
       <HeroNavigation active={active} handleButtonClick={handleButtonClick} />
-      <Section active={active} handleClose={handleClose} name="intro" />
+      <Section active={active} handleClose={handleClose} name="intro">
+        <Intro />
+      </Section>
 
       <Section active={active} handleClose={handleClose} name="write">
         <LetterForm />
@@ -29,4 +32,3 @@ const Sections = () => {
 };
 
 export default Sections;
-
