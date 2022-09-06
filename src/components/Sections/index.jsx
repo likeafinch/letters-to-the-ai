@@ -13,6 +13,8 @@ const Sections = () => {
   return (
     <>
       <HeroNavigation active={active} handleButtonClick={handleButtonClick} />
+      <Section active={active} handleClose={handleClose} name="intro" />
+
       <Section active={active} handleClose={handleClose} name="write">
         <LetterForm />
       </Section>
