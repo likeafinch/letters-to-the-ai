@@ -1,4 +1,3 @@
-/* eslint-disable filenames/match-regex */
 const LoadablePlugin = require('@loadable/webpack-plugin');
 exports.onCreateWebpackConfig = ({
   stage,

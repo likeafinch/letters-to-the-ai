@@ -4,5 +4,5 @@ export const introCopy = [
   'a civilization, ',
   'or a singularity; ',
   'this is an attempt to communicate.',
-  'We may just echo our thoughts to their future.'
+  'We may just echo our thoughts to their future.',
 ];

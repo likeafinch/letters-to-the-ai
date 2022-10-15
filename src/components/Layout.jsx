@@ -47,7 +47,7 @@ const GlobalStyle = css`
       px-2
       md:px-0
       bg-no-repeat
-      bg-coolGray-50`}
+      bg-gray-50`}
     animation: ${fade};
     background-image: url(${plasma});
     background-position: left bottom;

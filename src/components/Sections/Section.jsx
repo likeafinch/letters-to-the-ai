@@ -31,7 +31,7 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     pt-8
     md:pb-6
     md:pt-10
-    bg-blueGray-100
+    bg-slate-100
     bg-opacity-80
     rounded
     shadow

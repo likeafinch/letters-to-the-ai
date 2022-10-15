@@ -4,10 +4,10 @@ import tw, { styled } from 'twin.macro';
 
 export const variantStyles = {
   contained: tw`
-      text-blueGray-50
+      text-slate-50
       bg-text-main
       hover:cursor-pointer
-      hover:bg-coolGray-700
+      hover:bg-gray-700
       `,
   outlined: tw`
     border
@@ -59,6 +59,12 @@ Button.defaultProps = {
   variant: 'contained',
 };
 
-export const Actions = tw.div`grid grid-cols-1 lg:grid-cols-2 justify-items-stretch mt-auto pt-12`;
+export const Actions = tw.div`
+  grid
+  grid-cols-1
+  lg:grid-cols-2
+  justify-items-stretch
+  mt-auto
+  pt-12`;
 
 export default Button;
