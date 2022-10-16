@@ -14,12 +14,11 @@ const NavigationWrapper = styled.ul`
     lg:w-3/5
     max-w-md
     h-12
-    rounded
-    border
-    border-text-main
-    divide-text-main
+    shadow-hero
+    divide-[rgba(50,40,60,.5)]
     divide-x`}
   margin-top: -1px;
+  backdrop-filter: blur(5px);
 `;
 
 const NavigationButtonWrapper = tw.li`relative flex items-center justify-center h-full w-1/4`;

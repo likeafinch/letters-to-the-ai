@@ -10,7 +10,6 @@ const SectionWrapper = styled.div(({ showSection }) => [
       opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
       -webkit-filter 0.325s ease-in-out;
     backdrop-filter: blur(3px);
-    background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
     transform: translateY(0.25rem);
   `,
   showSection &&
@@ -31,10 +30,7 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     pt-8
     md:pb-6
     md:pt-10
-    bg-slate-100
-    bg-opacity-80
-    rounded
-    shadow
+    shadow-hero
     text-text-alt
     text-base
     tracking-paragraph
@@ -46,7 +42,7 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
     transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out,
       -webkit-transform 0.325s ease-in-out;
     min-height: 50vh;
-    backdrop-filter: blur(80px);
+    backdrop-filter: blur(5px);
     height: max-content;
     max-height: 95vh;
     -ms-overflow-style: none; /* Internet Explorer 10+ */

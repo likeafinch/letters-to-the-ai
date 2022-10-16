@@ -8,11 +8,7 @@ const IntroStyle = tw.div`
       flex
       flex-col
       items-center
-      bg-zinc-50
-      bg-opacity-5
-      p-2
-      rounded
-      shadow-inner
+      p-1
       `;
 
 const ParagraphStyle = tw.p`
@@ -34,3 +30,4 @@ const Intro = () => {
 };
 
 export default Intro;
+

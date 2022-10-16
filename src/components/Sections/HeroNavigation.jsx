@@ -6,7 +6,8 @@ import tw, { styled } from 'twin.macro';
 
 const HeroNavigationStyles = styled.div`
   ${tw`absolute flex flex-col items-center justify-center w-full md:w-2/3 h-screen`}
-  transform: translateY(${(props) => (props.showHeader ? 0 : 0.25)}rem);
+  opacity: ${(({showHeader}) => showHeader ? 1 : 0)};
+  transform: translateY(${({showHeader}) => (showHeader ? 0 : 0.25)}rem);
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
     opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
     -webkit-filter 0.325s ease-in-out;
@@ -25,12 +26,10 @@ const LogoCircleStyles = styled.div`
     h-24
     w-24
     p-1
-    -mb-1
     bg-contain
     bg-top
     bg-no-repeat
-    border
-    border-text-main
+    shadow-circle
     rounded-full`}
 
   img {
@@ -61,20 +60,20 @@ const HeroStyles = styled.div`
     max-h-[40rem]
     w-full
     md:w-[42rem]
-    border-t
-    border-b
-    border-text-main
+    shadow-hero
     py-12
     px-8
     my-14`}
+
+  backdrop-filter: blur(5px);
   transition: max-height .75s ease,padding .75s ease,opacity .325s ease-in-out;
   transition-delay: 0.25s;
   &:before,
   &:after {
-    ${tw`absolute h-14 bg-text-main`}
+    ${tw`absolute h-14 shadow-circle`}
     content: " ";
-    width: 1px;
-    left: calc(50% - 0.5px);
+    width: 2px;
+    left: calc(50% - 1px);
   }
   &:before {
     ${tw`-top-14`}
