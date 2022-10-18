@@ -12,7 +12,6 @@ const LetterWrapper = styled.div`
       items-center
       bg-text-alt
       bg-opacity-10
-      rounded
       shadow-sm
       `}
   backdrop-filter:blur(100px);
@@ -37,7 +36,6 @@ const Subject = styled.h4`
     text-background-alt
     bg-text-main
     bg-opacity-70
-    rounded
     `}
   backdrop-filter:blur(100px);
 `;

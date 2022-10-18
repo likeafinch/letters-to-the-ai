@@ -14,14 +14,23 @@ const NavigationWrapper = styled.ul`
     lg:w-3/5
     max-w-md
     h-12
+    divide-text-main
+    divide-opacity-50
+    divide-x
     shadow-hero
-    divide-[rgba(50,40,60,.5)]
-    divide-x`}
-  margin-top: -1px;
+    -mt-1
+  `}
   backdrop-filter: blur(5px);
 `;
 
-const NavigationButtonWrapper = tw.li`relative flex items-center justify-center h-full w-1/4`;
+const NavigationButtonWrapper = tw.li`
+  relative
+  flex
+  items-center
+  justify-center
+  h-full
+  w-1/4
+  `;
 
 const NavigationButton = styled.button`
   ${tw`
@@ -38,11 +47,12 @@ const NavigationButton = styled.button`
     text-sm
     text-text-main
     font-thin
-    bg-transparent`}
-  transition: background-color .2s ease-in-out,color .2s ease-in-out;
-  &:hover {
-    background-color: hsla(0, 0%, 100%, 0.075);
-  }
+    bg-transparent
+    transition-all
+    duration-700
+    hover:bg-black
+    hover:bg-opacity-10
+    `}
 `;
 
 const NavigationItem = (props) => {

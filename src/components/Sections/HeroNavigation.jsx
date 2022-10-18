@@ -5,7 +5,7 @@ import logo from '../../assets/simple-icon.png';
 import tw, { styled } from 'twin.macro';
 
 const HeroNavigationStyles = styled.div`
-  ${tw`absolute flex flex-col items-center justify-center w-full md:w-2/3 h-screen`}
+  ${tw`absolute flex flex-col pt-12 md:pt-0 items-center md:justify-center w-full md:w-2/3 h-screen`}
   opacity: ${(({showHeader}) => showHeader ? 1 : 0)};
   transform: translateY(${({showHeader}) => (showHeader ? 0 : 0.25)}rem);
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
@@ -63,8 +63,9 @@ const HeroStyles = styled.div`
     shadow-hero
     py-12
     px-8
-    my-14`}
-
+    mt-14
+    mb-36
+    md:mb-14`}
   backdrop-filter: blur(5px);
   transition: max-height .75s ease,padding .75s ease,opacity .325s ease-in-out;
   transition-delay: 0.25s;
@@ -72,14 +73,14 @@ const HeroStyles = styled.div`
   &:after {
     ${tw`absolute h-14 shadow-circle`}
     content: " ";
-    width: 2px;
+    width: 1.5px;
     left: calc(50% - 1px);
   }
   &:before {
     ${tw`-top-14`}
   }
   &:after {
-    ${tw`-bottom-14`}
+    ${tw`-bottom-36 md:-bottom-14`}
   }
   h1 {
     ${tw`

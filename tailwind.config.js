@@ -271,7 +271,7 @@ const colors = {
   'background-alt': 'rgb(241, 245, 249)',
   'background-main': '#def4f8',
   'text-alt': '#23262b',
-  'text-main': '#15171a',
+  'text-main': 'rgb(50,40,60)',
 };
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],

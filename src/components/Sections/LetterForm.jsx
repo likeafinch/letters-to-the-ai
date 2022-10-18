@@ -6,7 +6,6 @@ import { useLetterForm } from '../../atoms';
 
 const LetterForm = () => {
   const {
-    email,
     name,
     subject,
     message,
@@ -24,15 +23,6 @@ const LetterForm = () => {
           value={name}
           name={'name'}
           label={'Name'}
-        />
-        <Input
-          onChange={handleFormChange}
-          name={'email'}
-          label={'E-Mail'}
-          type={'email'}
-          value={email}
-          inputWidth={'100%'}
-          inputMarginLeft={1.5}
         />
       </MultiInputs>
       <Input
@@ -61,3 +51,4 @@ const LetterForm = () => {
 };
 
 export default LetterForm;
+

@@ -9,14 +9,12 @@ const ADD_LETTER = gql`
     createLetter(data: $letter) {
       name
       subject
-      email
       message
     }
   }
 `;
 
 const DEFAULT_LETTER_FORM = {
-  email: '',
   name: '',
   subject: '',
   message: '',
@@ -45,10 +43,13 @@ export const letterFormErrors = selector({
   key: 'letterFormErrors',
   get: ({ get }) => {
     const touched = get(letterFormTouched);
-    const { email } = get(letterForm);
-    return {
-      email: touched.email || !emailRegexp.test(email),
-    };
+    return Object.keys(touched).reduce(
+      (prev, next) => ({
+        ...prev,
+        [next]: !form[next],
+      }),
+      {}
+    );
   },
 });
 

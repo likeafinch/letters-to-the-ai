@@ -5,19 +5,17 @@ import tw, { styled } from 'twin.macro';
 export const variantStyles = {
   contained: tw`
       text-slate-50
-      bg-text-main
+      bg-gray-700
       hover:cursor-pointer
-      hover:bg-gray-700
+      hover:bg-gray-400
       `,
   outlined: tw`
-    border
     text-text-main
-    border-text-main
-    border-solid
+    shadow-circle
     bg-transparent
     cursor-pointer
-    hover:text-background-main
-    hover:bg-text-alt`,
+    hover:text-slate-50
+    hover:bg-gray-600`,
 };
 const StyledButton = styled.button(({ variant, disabled }) => [
   tw`
@@ -28,10 +26,12 @@ const StyledButton = styled.button(({ variant, disabled }) => [
     justify-center
     tracking-paragraph
     transition
-    transition-duration[.7s]
+    duration-700
     shadow-none
     h-14
-    uppercase`,
+    uppercase
+    bg-opacity-80
+    `,
   disabled && tw`pointer-events-none grayscale`,
   variantStyles[variant],
 ]);

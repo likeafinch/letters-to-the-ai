@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
 
 const InputWrapper = styled.div`
-  ${tw`relative no-underline rounded text-text-main flex-col flex justify-end mb-6`};
+  ${tw`relative no-underline  text-text-main flex-col flex justify-end mb-6`};
   width: ${({ inputWidth }) => inputWidth || '-webkit-fill-available'};
   margin-left: ${({ inputMarginLeft }) => inputMarginLeft || 0}rem;
   input:-internal-autofill-selected {
@@ -40,12 +40,9 @@ const InnerInput = styled.input`
     uppercase
     text-base
     h-11
-    border
-    border-solid
-    border-text-main
     px-3
     outline-none
-    rounded
+    shadow-circle
     transition-all
     duration-700
     `}

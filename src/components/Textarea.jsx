@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
 
-const TextareaWrapper = tw.div`relative no-underline rounded text-text-main flex-col flex justify-end mb-6 w-fill`;
+const TextareaWrapper = tw.div`relative no-underline  text-text-main flex-col flex justify-end mb-6 w-fill`;
 
 const TextareaLabel = styled.label`
   ${tw`text-base mb-4 text-text-main inline-flex uppercase tracking-paragraph`}
@@ -20,12 +20,10 @@ const InnerTextarea = styled.textarea`
     text-base
     h-32
     md:h-48
-    border
-    border-solid
-    border-text-main
+    shadow-circle
     p-3
     outline-none
-    rounded`}
+    `}
   resize: none;
   &:focus {
     background: hsla(0, 0%, 100%, 0.075);
