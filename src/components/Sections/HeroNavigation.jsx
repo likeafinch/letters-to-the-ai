@@ -6,8 +6,8 @@ import tw, { styled } from 'twin.macro';
 
 const HeroNavigationStyles = styled.div`
   ${tw`absolute flex flex-col pt-12 md:pt-0 items-center md:justify-center w-full md:w-2/3 h-screen`}
-  opacity: ${(({showHeader}) => showHeader ? 1 : 0)};
-  transform: translateY(${({showHeader}) => (showHeader ? 0 : 0.25)}rem);
+  opacity: ${({ showHeader }) => (showHeader ? 1 : 0)};
+  transform: translateY(${({ showHeader }) => (showHeader ? 0 : 0.25)}rem);
   transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
     opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out,
     -webkit-filter 0.325s ease-in-out;
@@ -67,7 +67,8 @@ const HeroStyles = styled.div`
     mb-36
     md:mb-14`}
   backdrop-filter: blur(5px);
-  transition: max-height .75s ease,padding .75s ease,opacity .325s ease-in-out;
+  transition: max-height 0.75s ease, padding 0.75s ease,
+    opacity 0.325s ease-in-out;
   transition-delay: 0.25s;
   &:before,
   &:after {

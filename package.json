@@ -11,7 +11,7 @@
     "format": "prettier  --ignore-path .gitignore ./ --write \"./**/*.{js,jsx,json,md}\"",
     "lint": "eslint --ext .js --ignore-path .gitignore ./",
     "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore ./",
-    "commit:pre": "npm run lint:fix && npm run build && npm run format && git add ."
+    "commit:pre": "npm run lint:fix && npm run format && git add ."
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
