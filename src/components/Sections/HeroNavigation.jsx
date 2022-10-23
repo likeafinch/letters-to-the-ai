@@ -93,7 +93,8 @@ const HeroStyles = styled.div`
       text-center
       mb-4
       uppercase
-      tracking-title`}
+      tracking-paragraph
+      md:tracking-title`}
   }
   p {
     ${tw`
