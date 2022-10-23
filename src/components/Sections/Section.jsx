@@ -59,6 +59,10 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
   justifyEvenly && tw`justify-evenly`,
 ]);
 
+const AnimatedSection = styled(animated.div)`
+  ${tw`w-full md:w-[42rem] py-24 md:py-0`}
+`
+
 const SectionTitle = tw.h2`relative text-text-main border-b border-text-main mb-8 pb-2 text-2xl tracking-title mr-auto uppercase`;
 
 const CloseButton = styled.button`
@@ -81,6 +85,7 @@ const CloseButton = styled.button`
     hover:bg-black
     hover:bg-opacity-10
     `}
+    transform: scale(1.15);
   p {
     ${tw`relative h-full w-full text-center uppercase text-lg text-text-main font-bold leading-10`}
     transform: scaleX(1.5);
@@ -90,13 +95,13 @@ const CloseButton = styled.button`
 const Section = (props) => {
   const { name, active, children, handleClose, justifyEvenly } = props;
   const animationProps = useSpring({
-    to: { opacity: 1, width: '100%' },
+    to: { opacity: 1 },
     from: { opacity: 0 },
     reverse: name !== active,
   });
   return (
     <SectionWrapper showSection={name === active}>
-      <animated.div style={animationProps}>
+      <AnimatedSection style={animationProps}>
         <SectionInner
           showSection={name === active}
           justifyEvenly={justifyEvenly}
@@ -107,7 +112,7 @@ const Section = (props) => {
           <SectionTitle>{name}</SectionTitle>
           {children}
         </SectionInner>
-      </animated.div>
+      </AnimatedSection>
     </SectionWrapper>
   );
 };

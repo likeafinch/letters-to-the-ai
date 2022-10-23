@@ -17,18 +17,18 @@ const Sections = () => {
       <Section active={active} handleClose={handleClose} name="intro">
         <Intro />
       </Section>
-
       <Section active={active} handleClose={handleClose} name="write">
-        <LetterForm />
+        <LetterForm handleClose={handleClose} />
       </Section>
       <Section active={active} handleClose={handleClose} name="letters">
         <LetterList />
       </Section>
       <Section active={active} handleClose={handleClose} name="contact">
-        <ContactForm />
+        <ContactForm handleClose={handleClose} />
       </Section>
     </>
   );
 };
 
 export default Sections;
+

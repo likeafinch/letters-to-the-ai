@@ -1,8 +1,6 @@
 import { atom, selector, useRecoilValue, useRecoilState } from 'recoil';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-/* eslint-disable no-useless-escape */
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const ADD_LETTER = gql`
   mutation CreateLetter($letter: LetterInput!) {
@@ -46,7 +44,7 @@ export const letterFormErrors = selector({
     return Object.keys(touched).reduce(
       (prev, next) => ({
         ...prev,
-        [next]: !form[next],
+        [next]: !touched[next],
       }),
       {}
     );
@@ -55,7 +53,7 @@ export const letterFormErrors = selector({
 
 export const letterFormSubmittable = selector({
   key: 'letterFormSubmittable',
-  get: ({ get }) => {
+  get: () => {
     // const errors = get(letterFormErrors);
     // const touched = get(letterFormTouched);
     return true;
@@ -76,10 +74,13 @@ const useLetterForm = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (afterSubmitFn) => () => {
     console.log(letter);
     addLetter({ variables: { letter } });
     setLetter(DEFAULT_LETTER_FORM);
+    if (afterSubmitFn) {
+      afterSubmitFn();
+    }
   };
 
   const handleReset = () => setLetter(DEFAULT_LETTER_FORM);

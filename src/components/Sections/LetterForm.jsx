@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Button, { Actions } from '../Button';
 import Input, { MultiInputs } from '../Input';
 import Textarea from '../Textarea';
 import { useLetterForm } from '../../atoms';
 
-const LetterForm = () => {
+const LetterForm = ({ handleClose }) => {
   const {
     name,
     subject,
@@ -42,12 +43,16 @@ const LetterForm = () => {
         <Button
           label={'Submit'}
           disabled={!submittable}
-          onClick={handleSubmit}
+          onClick={handleSubmit(handleClose)}
         />
         <Button label={'Reset'} onClick={handleReset} variant={'outlined'} />
       </Actions>
     </>
   );
+};
+
+LetterForm.propTypes = {
+  handleClose: PropTypes.func,
 };
 
 export default LetterForm;

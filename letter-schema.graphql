@@ -1,9 +1,0 @@
-type Letter {
-  name: String!
-  subject: String!
-  message: String!
-}
-
-type Query {
-  allLetters: [Letter]
-}

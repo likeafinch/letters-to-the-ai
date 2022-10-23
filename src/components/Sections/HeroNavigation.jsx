@@ -81,7 +81,7 @@ const HeroStyles = styled.div`
     ${tw`-top-14`}
   }
   &:after {
-    ${tw`-bottom-36 md:-bottom-14`}
+    ${tw`-bottom-36 md:-bottom-14 h-36 md:h-14`}
   }
   h1 {
     ${tw`
