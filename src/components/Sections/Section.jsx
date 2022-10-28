@@ -61,7 +61,7 @@ const SectionInner = styled.div(({ showSection, justifyEvenly }) => [
 
 const AnimatedSection = styled(animated.div)`
   ${tw`w-full md:w-[42rem] py-24 md:py-0`}
-`
+`;
 
 const SectionTitle = tw.h2`relative text-text-main border-b border-text-main mb-8 pb-2 text-2xl tracking-title mr-auto uppercase`;
 
@@ -85,7 +85,7 @@ const CloseButton = styled.button`
     hover:bg-black
     hover:bg-opacity-10
     `}
-    transform: scale(1.15);
+  transform: scale(1.15);
   p {
     ${tw`relative h-full w-full text-center uppercase text-lg text-text-main font-bold leading-10`}
     transform: scaleX(1.5);

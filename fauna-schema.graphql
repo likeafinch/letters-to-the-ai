@@ -1,13 +1,13 @@
 type Letter {
-  name: String!
-  subject: String!
-  message: String!
+    name:          String!
+    subject:       String!
+    message:       String!
 }
 
 type Contact {
-  name: String!
-  email: String!
-  message: String!
+    name:          String!
+    email:         String!
+    message:       String!
 }
 
 type Query {

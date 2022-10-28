@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useContactForm } from '../../atoms';
 import Button, { Actions } from '../Button';
-import Input, { MultiInputs } from '../Input';
-import Textarea from '../Textarea';
+import { TextField, MultiInputs } from '../TextField';
+
 const ContactForm = ({ handleClose }) => {
   const {
     name,
@@ -17,13 +17,13 @@ const ContactForm = ({ handleClose }) => {
   return (
     <>
       <MultiInputs>
-        <Input
+        <TextField
           onChange={handleFormChange}
           value={name}
           name={'name'}
           label={'Name'}
         />
-        <Input
+        <TextField
           onChange={handleFormChange}
           value={email}
           name={'email'}
@@ -33,7 +33,8 @@ const ContactForm = ({ handleClose }) => {
           inputMarginLeft={1.5}
         />
       </MultiInputs>
-      <Textarea
+      <TextField
+        multiline
         onChange={handleFormChange}
         value={message}
         name={'message'}

@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button, { Actions } from '../Button';
-import Input, { MultiInputs } from '../Input';
-import Textarea from '../Textarea';
+import { TextField, MultiInputs } from '../TextField';
 import { useLetterForm } from '../../atoms';
 
 const LetterForm = ({ handleClose }) => {
@@ -19,21 +18,23 @@ const LetterForm = ({ handleClose }) => {
   return (
     <>
       <MultiInputs>
-        <Input
+        <TextField
           onChange={handleFormChange}
           value={name}
           name={'name'}
           label={'Name'}
         />
+        <TextField
+          onChange={handleFormChange}
+          name={'subject'}
+          label={'Subject'}
+          value={subject}
+          inputWidth={'100%'}
+        />
       </MultiInputs>
-      <Input
-        onChange={handleFormChange}
-        name={'subject'}
-        label={'Subject'}
-        value={subject}
-        inputWidth={'100%'}
-      />
-      <Textarea
+
+      <TextField
+        multiline
         onChange={handleFormChange}
         value={message}
         name={'message'}

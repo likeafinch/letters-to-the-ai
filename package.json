@@ -8,6 +8,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "format": "prettier  --ignore-path .gitignore ./ --write \"./**/*.{js,jsx,json,md}\"",
     "lint": "eslint --ext .js --ignore-path .gitignore ./",
     "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore ./",
@@ -35,8 +36,9 @@
     "react-dom": "latest",
     "react-helmet": "latest",
     "react-spring": "^9.4.5",
+    "react-toastify": "^9.0.8",
     "recoil": "^0.7.4",
-    "tailwindcss": "^3.1.4",
+    "tailwindcss": "^3.2.1",
     "twin.macro": "^2.8.2",
     "unfetch": "^4.2.0"
   },
@@ -82,10 +84,6 @@
       "ecmaVersion": 8
     },
     "rules": {
-      "indent": [
-        "error",
-        2
-      ],
       "linebreak-style": [
         "error",
         "unix"

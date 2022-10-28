@@ -1,6 +1,7 @@
 import { atom, selector, useRecoilValue, useRecoilState } from 'recoil';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
+import { toast } from 'react-toastify';
 
 const ADD_LETTER = gql`
   mutation CreateLetter($letter: LetterInput!) {
@@ -80,6 +81,7 @@ const useLetterForm = () => {
     setLetter(DEFAULT_LETTER_FORM);
     if (afterSubmitFn) {
       afterSubmitFn();
+      toast('Letter for the AI has been left!');
     }
   };
 

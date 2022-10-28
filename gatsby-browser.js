@@ -7,7 +7,7 @@ const client = new ApolloClient({
   request: (operation) => {
     operation.setContext({
       headers: {
-        Authorization:process.env.GATSBY_APOLLO_AUTHORIZATION_HEADER
+        Authorization: process.env.GATSBY_APOLLO_AUTHORIZATION_HEADER,
       },
     });
   },
@@ -15,6 +15,6 @@ const client = new ApolloClient({
 
 export const wrapRootElement = ({ element }) => (
   <RecoilRoot>
-    <ApolloProvider client={client}>{element}</ApolloProvider>;
+    <ApolloProvider client={client}>{element}</ApolloProvider>
   </RecoilRoot>
 );

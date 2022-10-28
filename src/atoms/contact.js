@@ -1,6 +1,7 @@
 import { atom, selector, useRecoilValue, useRecoilState } from 'recoil';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
+import { toast } from 'react-toastify';
 /* eslint-disable no-useless-escape */
 const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -84,6 +85,7 @@ const useContactForm = () => {
     setContact(DEFAULT_CONTACT_FORM);
     if (afterSubmitFn) {
       afterSubmitFn();
+      toast('Contact message sent!', { autoClose: 1000 });
     }
   };
 
