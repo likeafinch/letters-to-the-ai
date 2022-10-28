@@ -13,7 +13,7 @@ export const FieldStyles = tw`
     bg-slate-200
     bg-opacity-50
     shadow-input
-    text-slate-900
+    text-slate-700
     tracking-paragraph
     focus:shadow-input-focused
     hover:shadow-input-focused

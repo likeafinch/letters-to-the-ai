@@ -29,8 +29,7 @@ const ContactForm = ({ handleClose }) => {
           name={'email'}
           label={'E-Mail'}
           type={'email'}
-          inputWidth={'100%'}
-          inputMarginLeft={1.5}
+          fieldMarginLeft={'1.5rem'}
         />
       </MultiInputs>
       <TextField

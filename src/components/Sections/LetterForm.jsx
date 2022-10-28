@@ -29,7 +29,7 @@ const LetterForm = ({ handleClose }) => {
           name={'subject'}
           label={'Subject'}
           value={subject}
-          inputWidth={'100%'}
+          fieldMarginLeft={'1.5rem'}
         />
       </MultiInputs>
 

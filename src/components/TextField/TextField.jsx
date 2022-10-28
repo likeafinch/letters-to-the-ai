@@ -16,6 +16,7 @@ const TextFieldStyles = styled.div(({ fieldWidth, fieldMarginLeft }) => [
   mb-6
   w-fill
   md:w-full
+  autofill:bg-transparent
   ml-0
   `,
   css`
@@ -29,7 +30,9 @@ const TextFieldStyles = styled.div(({ fieldWidth, fieldMarginLeft }) => [
     `,
   fieldMarginLeft &&
     css`
-      margin-left: ${fieldMarginLeft};
+      @media (min-width: 600px) {
+        margin-left: ${fieldMarginLeft};
+      }
     `,
 ]);
 

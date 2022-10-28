@@ -4,8 +4,8 @@ import tw from 'twin.macro';
 
 const LabelStyles = tw.label`
     text-base
-    mb-4
-    text-slate-900
+    mb-2
+    text-slate-700
     inline-flex
     uppercase
     tracking-paragraph
@@ -16,8 +16,11 @@ const LabelStyles = tw.label`
       after:pl-[.2rem]
     )
     peer-invalid:text-rose-400
-    peer-invalid:font-medium
-    hover:font-medium
+    peer-invalid:font-bold
+    peer-focus:font-bold
+    peer-hover:font-bold
+    hover:font-bold
+    focus:font-bold
   `;
 
 function Label(props) {
