@@ -7,17 +7,17 @@ import Label from './Label';
 
 const TextFieldStyles = styled.div(({ fieldWidth, fieldMarginLeft }) => [
   tw`
-  relative
-  no-underline
-  text-slate-900
-  flex
-  flex-col-reverse
-  justify-end
-  mb-6
-  w-fill
-  md:w-full
-  autofill:bg-transparent
-  ml-0
+    relative
+    no-underline
+    text-slate-900
+    flex
+    flex-col-reverse
+    justify-end
+    mb-6
+    w-fill
+    md:w-full
+    autofill:bg-transparent
+    ml-0
   `,
   css`
     input:-internal-autofill-selected {

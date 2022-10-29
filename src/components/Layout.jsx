@@ -5,6 +5,7 @@ import tw, { GlobalStyles as BaseStyles, styled } from 'twin.macro';
 import { ToastContainer } from 'react-toastify';
 import { fade } from '../utils';
 import '@fontsource/source-sans-pro';
+import 'react-toastify/dist/ReactToastify.css';
 import plasma from '../assets/plasma_d.gif';
 
 const GlobalStyle = css`
@@ -91,6 +92,7 @@ LayoutBase.propTypes = {
 
 const Layout = ({ children }) => (
   <LayoutBase>
+    {children}
     <StyledContainer
       position="top-center"
       autoClose={2000}
@@ -102,7 +104,6 @@ const Layout = ({ children }) => (
       pauseOnHover
       theme="dark"
     />
-    {children}
   </LayoutBase>
 );
 

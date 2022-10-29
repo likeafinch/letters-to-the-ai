@@ -26,7 +26,7 @@ export const FieldStyles = tw`
 export const MultiInputs = tw.div`
     flex
     flex-col
-    xl:flex-row
+    md:flex-row
     w-full
     items-center
     justify-between

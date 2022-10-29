@@ -80,12 +80,11 @@ const useContactForm = () => {
   };
 
   const handleSubmit = (afterSubmitFn) => () => {
-    console.log(contact);
     addContact({ variables: { contact } });
     setContact(DEFAULT_CONTACT_FORM);
     if (afterSubmitFn) {
       afterSubmitFn();
-      toast('Contact message sent!', { autoClose: 1000 });
+      toast('Contact message sent!', { autoClose:1000, closeOnClick: true });
     }
   };
 

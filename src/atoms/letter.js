@@ -76,7 +76,6 @@ const useLetterForm = () => {
   };
 
   const handleSubmit = (afterSubmitFn) => () => {
-    console.log(letter);
     addLetter({ variables: { letter } });
     setLetter(DEFAULT_LETTER_FORM);
     if (afterSubmitFn) {
