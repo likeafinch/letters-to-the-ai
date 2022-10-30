@@ -114,8 +114,7 @@ const StyledContainer = styled(ToastContainer)`
     .Toastify__progress-bar,
     .Toastify__progress-bar--info,
     .Toastify__progress-bar--success,
-    .Toastify__progress-bar--warning,
-    .Toastify__progress-bar--error {
+    .Toastify__progress-bar--warning {
       ${tw`
         absolute
         top-[-1.25rem]
@@ -129,6 +128,12 @@ const StyledContainer = styled(ToastContainer)`
         -z-1
       `}
       mix-blend-mode: difference;
+    }
+
+    .Toastify__progress-bar--error {
+      ${tw`
+        bg-rose-400
+      `}
     }
 
     .Toastify__close-button {

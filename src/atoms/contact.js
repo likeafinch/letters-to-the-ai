@@ -1,9 +1,10 @@
-import { atom, selector, useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { toast } from 'react-toastify';
-/* eslint-disable no-useless-escape */
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+import { createFormAtoms, stringRegexp, emailRegexp, formSubmittable } from './utils';
+
+// Contact Form
 
 const ADD_CONTACT = gql`
   mutation CreateContact($contact: ContactInput!) {
@@ -15,59 +16,33 @@ const ADD_CONTACT = gql`
   }
 `;
 
-const DEFAULT_CONTACT_FORM = {
+const INITIAL_CONTACT_FORM = {
   name: '',
   email: '',
   message: '',
 };
 
-export const contactForm = atom({
-  key: 'contactForm',
-  default: DEFAULT_CONTACT_FORM,
-});
+const VALIDATE_CONTACT_FORM = {
+  name: (value) => stringRegexp.test(value),
+  email: (value) => emailRegexp.test(value),
+  message: (value) => stringRegexp.test(value),
+};
 
-export const contactFormTouched = selector({
-  key: 'contactFormTouched',
-  get: ({ get }) => {
-    const form = get(contactForm);
-    return Object.keys(form).reduce(
-      (prev, next) => ({
-        ...prev,
-        [next]: form[next] !== '',
-      }),
-      {}
-    );
-  },
-});
-
-export const contactFormErrors = selector({
-  key: 'contactFormErrors',
-  get: ({ get }) => {
-    const touched = get(contactFormTouched);
-    const form = get(contactForm);
-    return Object.keys(touched).reduce(
-      (prev, next) => ({
-        ...prev,
-        [next]:
-          next === 'email' ? emailRegexp.test(form[next]) : !touched[next],
-      }),
-      {}
-    );
-  },
-});
-
-export const contactFormSubmittable = selector({
-  key: 'contactFormSubmittable',
-  get: ({ get }) => {
-    // const errors = get(contactFormErrors);
-    // const touched = get(contactFormTouched);
-    return true;
-  },
-});
-
+const {
+  contactForm,
+  contactFormTouched,
+  contactFormError,
+  contactErrorMessages,
+}  = createFormAtoms(
+  INITIAL_CONTACT_FORM,
+  VALIDATE_CONTACT_FORM,
+  'contact'
+);
 const useContactForm = () => {
   const [contact, setContact] = useRecoilState(contactForm);
-  const submittable = useRecoilValue(contactFormSubmittable);
+  const [touched, setTouched] = useRecoilState(contactFormTouched);
+  const errors = useRecoilValue(contactFormError);
+  const errorMessages = useRecoilValue(contactErrorMessages);
   const [addContact, { data }] = useMutation(ADD_CONTACT);
 
   const handleFormChange = (event) => {
@@ -77,22 +52,33 @@ const useContactForm = () => {
       ...contact,
       [name]: value,
     });
+    setTouched({
+      ...touched,
+      [name]: true,
+    });
   };
 
   const handleSubmit = (afterSubmitFn) => () => {
-    addContact({ variables: { contact } });
-    setContact(DEFAULT_CONTACT_FORM);
-    if (afterSubmitFn) {
-      afterSubmitFn();
-      toast('Contact message sent!', { theme: 'dark' });
+    if (!formSubmittable(touched, errors)) {
+      errorMessages.map((errorMessage) => toast.error(errorMessage));
+    } else {
+      addContact({ variables: { contact } });
+      setContact(INITIAL_CONTACT_FORM);
+      if (afterSubmitFn) {
+        afterSubmitFn();
+        toast('Contact for the AI has been left!');
+      }
     }
   };
 
-  const handleReset = () => setContact(DEFAULT_CONTACT_FORM);
+  const handleReset = () => setContact(INITIAL_CONTACT_FORM);
 
   return {
     ...contact,
-    submittable,
+    touched,
+    errors,
+    errorMessages,
+    submittable: formSubmittable(touched, errors),
     data,
     handleFormChange,
     handleSubmit,

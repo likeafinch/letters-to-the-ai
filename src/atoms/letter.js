@@ -1,7 +1,14 @@
-import { atom, selector, useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { toast } from 'react-toastify';
+import {
+  createFormAtoms,
+  formSubmittable,
+  stringRegexp,
+} from './utils';
+
+// Letter Form
 
 const ADD_LETTER = gql`
   mutation CreateLetter($letter: LetterInput!) {
@@ -13,57 +20,29 @@ const ADD_LETTER = gql`
   }
 `;
 
-const DEFAULT_LETTER_FORM = {
+const INITIAL_LETTER_FORM = {
   name: '',
   subject: '',
   message: '',
 };
 
-export const letterForm = atom({
-  key: 'letterForm',
-  default: DEFAULT_LETTER_FORM,
-});
+const VALIDATE_LETTER_FORM = {
+  name: (value) => stringRegexp.test(value),
+  subject: (value) => stringRegexp.test(value),
+  message: (value) => stringRegexp.test(value),
+};
 
-export const letterFormTouched = selector({
-  key: 'letterFormTouched',
-  get: ({ get }) => {
-    const form = get(letterForm);
-    return Object.keys(form).reduce(
-      (prev, next) => ({
-        ...prev,
-        [next]: form[next] !== '',
-      }),
-      {}
-    );
-  },
-});
-
-export const letterFormErrors = selector({
-  key: 'letterFormErrors',
-  get: ({ get }) => {
-    const touched = get(letterFormTouched);
-    return Object.keys(touched).reduce(
-      (prev, next) => ({
-        ...prev,
-        [next]: !touched[next],
-      }),
-      {}
-    );
-  },
-});
-
-export const letterFormSubmittable = selector({
-  key: 'letterFormSubmittable',
-  get: () => {
-    // const errors = get(letterFormErrors);
-    // const touched = get(letterFormTouched);
-    return true;
-  },
-});
+const { letterForm, letterFormTouched, letterFormError, letterErrorMessages } = createFormAtoms(
+  INITIAL_LETTER_FORM,
+  VALIDATE_LETTER_FORM,
+  'letter'
+);
 
 const useLetterForm = () => {
   const [letter, setLetter] = useRecoilState(letterForm);
-  const submittable = useRecoilValue(letterFormSubmittable);
+  const [touched, setTouched] = useRecoilState(letterFormTouched);
+  const errors = useRecoilValue(letterFormError);
+  const errorMessages= useRecoilValue(letterErrorMessages);
   const [addLetter, { data }] = useMutation(ADD_LETTER);
 
   const handleFormChange = (event) => {
@@ -73,22 +52,35 @@ const useLetterForm = () => {
       ...letter,
       [name]: value,
     });
+    setTouched({
+      ...touched,
+      [name]: true,
+    });
   };
 
   const handleSubmit = (afterSubmitFn) => () => {
-    addLetter({ variables: { letter } });
-    setLetter(DEFAULT_LETTER_FORM);
-    if (afterSubmitFn) {
-      afterSubmitFn();
-      toast('Letter for the AI has been left!', {theme:'dark'});
+    if (!formSubmittable(touched, errors)) {
+      errorMessages.map((errorMessage) =>
+        toast.error(errorMessage)
+      );
+    } else {
+      addLetter({ variables: { letter } });
+      setLetter(INITIAL_LETTER_FORM);
+      if (afterSubmitFn) {
+        afterSubmitFn();
+        toast('Letter for the AI has been left!');
+      }
     }
   };
 
-  const handleReset = () => setLetter(DEFAULT_LETTER_FORM);
+  const handleReset = () => setLetter(INITIAL_LETTER_FORM);
 
   return {
     ...letter,
-    submittable,
+    touched,
+    errors,
+    errorMessages,
+    submittable:formSubmittable(touched, errors),
     data,
     handleFormChange,
     handleSubmit,

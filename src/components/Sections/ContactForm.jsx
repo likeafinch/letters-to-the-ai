@@ -9,17 +9,22 @@ const ContactForm = ({ handleClose }) => {
     name,
     email,
     message,
+    errors,
+    touched,
     submittable,
     handleFormChange,
     handleSubmit,
     handleReset,
   } = useContactForm();
+
+  console.log(name, email, message, submittable, errors, touched)
   return (
     <>
       <MultiInputs>
         <TextField
           onChange={handleFormChange}
           value={name}
+          error={errors[name]}
           name={'name'}
           label={'Name'}
           placeholder={'I. C. Weiner'}
@@ -27,6 +32,7 @@ const ContactForm = ({ handleClose }) => {
         <TextField
           onChange={handleFormChange}
           value={email}
+          error={errors[email]}
           name={'email'}
           label={'E-Mail'}
           type={'email'}
@@ -38,6 +44,7 @@ const ContactForm = ({ handleClose }) => {
         multiline
         onChange={handleFormChange}
         value={message}
+        error={errors[message]}
         name={'message'}
         placeholder={'Gooyyt dayummmmm!'}
         label={'Message'}
