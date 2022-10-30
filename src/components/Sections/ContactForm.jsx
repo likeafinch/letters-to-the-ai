@@ -10,14 +10,12 @@ const ContactForm = ({ handleClose }) => {
     email,
     message,
     errors,
-    touched,
     submittable,
     handleFormChange,
     handleSubmit,
     handleReset,
   } = useContactForm();
 
-  console.log(name, email, message, submittable, errors, touched)
   return (
     <>
       <MultiInputs>
