@@ -84,7 +84,7 @@ const useContactForm = () => {
     setContact(DEFAULT_CONTACT_FORM);
     if (afterSubmitFn) {
       afterSubmitFn();
-      toast('Contact message sent!', { autoClose:1000, closeOnClick: true });
+      toast('Contact message sent!', { theme: 'dark' });
     }
   };
 

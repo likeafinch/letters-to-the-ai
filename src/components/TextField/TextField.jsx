@@ -5,7 +5,7 @@ import Input from './Input';
 import Textarea from './Textarea';
 import Label from './Label';
 
-const TextFieldStyles = styled.div(({ fieldWidth, fieldMarginLeft }) => [
+export const TextFieldStyles = styled.div(({ fieldWidth, fieldMarginLeft }) => [
   tw`
     relative
     no-underline

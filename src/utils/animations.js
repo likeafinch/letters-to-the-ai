@@ -11,5 +11,20 @@ const fadeBackground = keyframes`
 `;
 
 export const fade = css`
-  ${fadeBackground} 2s ease-in;
+  animation: ${fadeBackground} 2s ease-in;
+`;
+
+const heartBeatGrow = keyframes`
+	from {
+		transform: scale(1);
+		opacity: .5;
+	}
+	to {
+		transform: scale(1.25);
+		opacity: .75
+	}
+`;
+
+export const heartBeat = css`
+  animation: ${heartBeatGrow} 2s linear;
 `;

@@ -80,7 +80,7 @@ const useLetterForm = () => {
     setLetter(DEFAULT_LETTER_FORM);
     if (afterSubmitFn) {
       afterSubmitFn();
-      toast('Letter for the AI has been left!');
+      toast('Letter for the AI has been left!', {theme:'dark'});
     }
   };
 

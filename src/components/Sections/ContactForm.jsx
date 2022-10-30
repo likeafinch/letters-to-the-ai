@@ -22,6 +22,7 @@ const ContactForm = ({ handleClose }) => {
           value={name}
           name={'name'}
           label={'Name'}
+          placeholder={'I. C. Weiner'}
         />
         <TextField
           onChange={handleFormChange}
@@ -29,6 +30,7 @@ const ContactForm = ({ handleClose }) => {
           name={'email'}
           label={'E-Mail'}
           type={'email'}
+          placeholder={'noop.noop@vindicator.com'}
           fieldMarginLeft={'1.5rem'}
         />
       </MultiInputs>
@@ -37,6 +39,7 @@ const ContactForm = ({ handleClose }) => {
         onChange={handleFormChange}
         value={message}
         name={'message'}
+        placeholder={'Gooyyt dayummmmm!'}
         label={'Message'}
       />
       <Actions>

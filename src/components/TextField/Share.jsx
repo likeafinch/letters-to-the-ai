@@ -1,4 +1,5 @@
-import tw from 'twin.macro';
+import tw, {styled} from 'twin.macro';
+import { TextFieldStyles } from './TextField';
 
 export const FieldStyles = tw`
     relative
@@ -15,6 +16,7 @@ export const FieldStyles = tw`
     shadow-input
     text-slate-700
     tracking-paragraph
+    uppercase
     focus:shadow-input-focused
     hover:shadow-input-focused
     invalid:shadow-input-error
@@ -23,11 +25,16 @@ export const FieldStyles = tw`
     placeholder:text-opacity-50
     `;
 
-export const MultiInputs = tw.div`
-    flex
-    flex-col
-    md:flex-row
-    w-full
-    items-center
-    justify-between
-    `;
+export const MultiInputs = styled.div`
+    ${tw`
+        flex
+        flex-col
+        md:flex-row
+        w-full
+        items-center
+        justify-between
+    `}
+    ${TextFieldStyles}:nth-of-type(odd) {
+        flex-basis: 60%;
+    }
+`;

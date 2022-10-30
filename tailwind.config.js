@@ -296,12 +296,13 @@ module.exports = {
       boxShadow: {
         inverted:
           '0 -1px 15px -3px rgb(222, 244, 248, 0.1), 0 4px 6px -4px rgb(222, 244, 248, 0.1)',
-        hero: '0px -2px 1px 0px rgba(50,40,60,0.5) inset, 0px 2px 1px 0px rgba(50,40,60,0.5) inset',
-        circle: '0px 0px 1px 2px rgba(50,40,60,0.5) inset',
+        hero: '0px -2px 1px 0px rgba(71, 85, 105, .7) inset, 0px 2px 1px 0px rgba(71, 85, 105, .7) inset',
+        circle: '0px 0px 1px 2px rgba(71, 85, 105, .7) inset',
         input: `0px -1px 1px 0px ${colors.slate[600]} inset`,
         'input-focused': `0px -2px 1px 0px ${colors.slate[800]} inset`,
         'input-error': `0px -2px 1px 0px ${colors.rose[400]} inset`,
         'input-disabled': `0px -1px 1px 0px ${colors.slate[300]} inset`,
+        title: '0px -2px 0px 0px rgba(71, 85, 105, .7) inset',
       },
       colors,
       fontFamily: {
