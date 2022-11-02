@@ -33,8 +33,7 @@ const StyledButton = styled.button(({ variant }) => [
     hover:cursor-pointer
     disabled:(
       pointer-events-none
-      grayscale
-      opacity-80
+      opacity-60
     )
     `,
   variantStyles[variant],

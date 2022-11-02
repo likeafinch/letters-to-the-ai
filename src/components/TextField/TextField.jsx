@@ -52,7 +52,14 @@ function TextField(props) {
 
   return (
     <TextFieldStyles fieldMarginLeft={fieldMarginLeft} fieldWidth={fieldWidth}>
-      <Field className={'peer'} id={name} name={name} error={error} {...textFieldProps} />
+      <Field
+        className={'peer'}
+        id={name}
+        name={name}
+        error={error}
+        required={required}
+        {...textFieldProps}
+      />
       <Label htmlFor={name} label={label} />
     </TextFieldStyles>
   );

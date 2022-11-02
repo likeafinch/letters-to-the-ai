@@ -65,7 +65,6 @@ const StyledContainer = styled(ToastContainer)`
   &&&.Toastify__toast-container {
     ${tw`
       w-fill
-      pl-8
     `}
     .Toastify__toast {
       ${tw`
@@ -83,87 +82,21 @@ const StyledContainer = styled(ToastContainer)`
         w-full
         h-16
         md:w-max
-        pr-4
-        pl-8
+        px-4
         flex
         flex-col
         justify-center
         items-center
         uppercase
         font-thin
-        text-slate-300
-        tracking-paragraph
-        bg-slate-700
-        bg-opacity-70
+        text-slate-50
+        bg-slate-900/30
         backdrop-blur
         shadow-none
         rounded
     `}
-      mix-blend-mode:color-dodge;
-      --mask: radial-gradient(
-        2rem at -0.25rem 0.25rem,
-        #0000 100%,
-        rgb(51, 65, 85)
-      );
-      -webkit-mask: var(--mask);
-      mask: var(--mask);
       > div:last-child {
         flex: none;
-      }
-    }
-    .Toastify__progress-bar,
-    .Toastify__progress-bar--info,
-    .Toastify__progress-bar--success,
-    .Toastify__progress-bar--warning {
-      ${tw`
-        absolute
-        top-[-1.25rem]
-        left-0
-        w-16
-        h-16
-        animate-pulse
-        rounded-full
-        bg-slate-700
-        backdrop-blur
-        -z-1
-      `}
-      mix-blend-mode: difference;
-    }
-
-    .Toastify__progress-bar--error {
-      ${tw`
-        bg-rose-400
-      `}
-    }
-
-    .Toastify__close-button {
-      ${tw`
-      absolute
-      -top-1
-      left-1
-      w-14
-      h-14
-      flex
-      flex-col
-      justify-center
-      items-center
-      rounded-full
-      backdrop-blur
-      bg-slate-900
-      bg-opacity-50
-      text-slate-400
-      z-10
-      opacity-100
-      hover:(
-        bg-slate-400
-        bg-opacity-25
-        text-slate-700
-      )
-    `}
-      svg {
-        ${tw`
-          scale-150
-        `}
       }
     }
   }
@@ -188,13 +121,12 @@ const Layout = ({ children }) => (
     {children}
     <StyledContainer
       position="bottom-left"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
+      autoClose={3000}
+      closeButton={false}
       closeOnClick
-      pauseOnFocusLoss
       draggable
       pauseOnHover
+      hideProgressBar
       theme="dark"
     />
   </LayoutBase>

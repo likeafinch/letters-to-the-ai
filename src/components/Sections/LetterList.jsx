@@ -10,7 +10,7 @@ const LetterWrapper = styled.div`
       flex
       flex-col
       items-center
-      bg-text-alt
+      bg-slate-800
       bg-opacity-10
       shadow-sm
       `}
@@ -33,8 +33,8 @@ const Subject = styled.h4`
     w-full
     py-2
     px-2
-    text-background-alt
-    bg-text-main
+    text-slate-200
+    bg-slate-800
     bg-opacity-70
     `}
   backdrop-filter:blur(100px);
@@ -42,9 +42,9 @@ const Subject = styled.h4`
 
 const Message = tw.p`
   text-base
-  text-text-alt
+  text-slate-800
   text-opacity-80
-  bg-white
+  bg-slate-200
   rounded
   bg-opacity-20
   font-light

@@ -15,8 +15,11 @@ const LabelStyles = tw.label`
       after:left-0
       after:pl-[.2rem]
     )
-    peer-invalid:text-rose-400
-    peer-invalid:font-bold
+    peer-invalid:(
+      text-rose-400
+      font-bold
+      peer-focus:text-slate-700
+    )
     peer-focus:font-bold
     peer-hover:font-bold
     hover:font-bold

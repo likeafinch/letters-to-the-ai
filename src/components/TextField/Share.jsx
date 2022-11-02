@@ -20,6 +20,7 @@ export const FieldStyles = tw`
     focus:shadow-input-focused
     hover:shadow-input-focused
     invalid:shadow-input-error
+    invalid:focus:shadow-input-focused
     disabled:shadow-input-disabled
     disabled:text-slate-500
     placeholder:text-opacity-50

@@ -10,6 +10,7 @@ const ContactForm = ({ handleClose }) => {
     email,
     message,
     errors,
+    touched,
     submittable,
     handleFormChange,
     handleSubmit,
@@ -22,6 +23,7 @@ const ContactForm = ({ handleClose }) => {
         <TextField
           onChange={handleFormChange}
           value={name}
+          touched={touched[name]}
           error={errors[name]}
           name={'name'}
           label={'Name'}
@@ -30,6 +32,7 @@ const ContactForm = ({ handleClose }) => {
         <TextField
           onChange={handleFormChange}
           value={email}
+          touched={touched[email]}
           error={errors[email]}
           name={'email'}
           label={'E-Mail'}
@@ -42,10 +45,12 @@ const ContactForm = ({ handleClose }) => {
         multiline
         onChange={handleFormChange}
         value={message}
+        touched={touched[message]}
         error={errors[message]}
         name={'message'}
         placeholder={'Gooyyt dayummmmm!'}
         label={'Message'}
+        required
       />
       <Actions>
         <Button
